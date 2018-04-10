@@ -1,10 +1,10 @@
 {
-  "name": "@graphesque/react",
-  "version": "1.0.0",
-  "description": "React library for easing development of custom graphs.",
+  "name": "react-graphesque",
+  "version": "0.1.0",
+  "description": "A library for easing development of custom graphs. React bindings. 16.3+ for now.",
   "author": "seanmay",
   "license": "MIT",
-  "repository": "graphesque/graphesque",
+  "repository": "seanmay/graphesque",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -19,9 +19,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "prop-types": "^15.5.4",
-    "react": "^15.0.0 || ^16.0.0",
-    "react-dom": "^15.0.0 || ^16.0.0"
+    "react": "^16.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
