@@ -4,7 +4,11 @@
   "description": "A library for easing development of custom graphs. React bindings. 16.3+ for now.",
   "author": "seanmay",
   "license": "MIT",
-  "repository": "seanmay/graphesque",
+  "repository": {
+    "url": "https://github.com/seanmay/react-graphesque",
+    "type": "git"
+  },
+  "bugs": "https://github.com/seanmay/react-graphesque/issues",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
