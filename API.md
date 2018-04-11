@@ -83,5 +83,7 @@ A simple point in 2D space that has been converted to viewport space.
 
 ### `ProjectedLine`
 A tuple (array) of `start` and `end`; objects representing the endpoints of the line segment.  
+`[start, end]`  
+
 Each has the following type:  
 `{ point: ProjectedPoint, input: {x:number, y:number, [string]: any} }`
