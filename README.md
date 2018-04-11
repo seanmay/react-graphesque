@@ -13,6 +13,10 @@ then please do read on.
 
 **Graphesque** works by first _forcing you to separate your domain logic from your graphing algebra_, helping you with the latter, giving you a hook for rendering, and then getting out of your way. It’s not a &ldquo;graphing library&rdquo; so much as it&rsquo;s a _graphing library library_.
 
+## API
+
+[Lives here for now.](./API.md)
+
 ## Install
 
 ```bash
@@ -110,10 +114,6 @@ export const ExampleGraph = () => (
 );
 ```
 Though if you do this, you might notice that the points (and lines) have flipped from descending to _ascending_ (more on that later).
-
-## API
-
-[Lives here for now.](./API.md)
 
 ## TODO
 - support toggling clipping in `Plot`
