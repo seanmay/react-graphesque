@@ -1,5 +1,5 @@
 import * as React from "react";
-import { GraphData } from "../tools/graph.provider";
+import { GraphData } from "../providers/graph.provider";
 
 export const Graph = ({
   renderWidth = 300,

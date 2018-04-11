@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { GraphData } from "../tools/graph.provider";
-import { PlotData } from "../tools/plot.provider";
+import { GraphData } from "../providers/graph.provider";
+import { PlotData } from "../providers/plot.provider";
 
 const isFunction = f => typeof f === "function";
 

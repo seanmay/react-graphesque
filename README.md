@@ -111,6 +111,10 @@ export const ExampleGraph = () => (
 ```
 Though if you do this, you might notice that the points (and lines) have flipped from descending to _ascending_ (more on that later).
 
+## API
+
+[Lives here for now.](./API.md)
+
 ## TODO
 - support toggling clipping in `Plot`
 - add `RadialSeries` for pies/doughnuts/et cetera

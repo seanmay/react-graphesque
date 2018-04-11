@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { GraphData } from "../tools/graph.provider";
-import { PlotData } from "../tools/plot.provider";
+import { GraphData } from "../providers/graph.provider";
+import { PlotData } from "../providers/plot.provider";
 
 const buildProps = (graph, plot, input) => {
   const x = Number(input.x) || 0;
