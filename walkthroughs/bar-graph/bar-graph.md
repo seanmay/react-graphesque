@@ -146,11 +146,11 @@ Tada!
 
 As you can see, there wasn&rsquo;t a whole lot of work we had to do to draw the bars or to get them centred. As well, most of the math is pretty straightforward.
 
-You might be wondering why the left and right edges of the graph have smaller spaces than the spots in the middle. If you read through the steps of centering again, it should become apparent that the whitespaces that you see between two bars are half of the space on the right one one bar, and half the space on the left of the next bar. If there is only one bar, there is only half the space. There are ways to deal with that, that we can cover at a later point in time.
+You might be wondering why the left and right edges of the graph have smaller spaces than the spots in the middle. If you read through the steps of centering again, it should become apparent that the whitespaces that you see between two bars are half of the space on the right of one bar, and half the space on the left of the next bar. If there is only one bar then there is only half the space. There are ways to deal with that, that we can cover at a later point in time.
 
 > If this work is so common, why not just make a graph that spits out these bars?
 
-Well, I&rsquo;m glad you asked, self. The truth of the matter is that while this is a very common ask, when you want to show graphs to end-users or higher-ups, there are additional layers of design or polish that might want to be added; or additional layers of functionality. It becomes increasingly difficult to add those things, after the fact.
+Well, I&rsquo;m glad you asked, self. The truth of the matter is that while this is a very common ask, when you want to show graphs to end-users or higher-ups, there are additional layers of design or polish that might want to be added; or additional layers of functionality. It becomes increasingly difficult to add those things, after the fact, if all graphs are forced to behave this way.
 
 Let&rsquo;s try something else, instead.
 In the spirit of React, why don't we make our own simple little components, that will give us centred bars?
