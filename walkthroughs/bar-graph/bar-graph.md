@@ -18,8 +18,8 @@ export const BarGraph = ({ points }) => (
     <Plot>
       <PointSeries
         points={points}
-        renderPoint={({ point, input }) => (
-          <rect x={point.x} y={point.y} width={30} height={point.y * -1} />
+        renderPoint={({ point }) => (
+          <rect x={point.x} y={point.y} width={30} height={Math.abs(point.y)} />
         )}
       />
     </Plot>
@@ -27,7 +27,7 @@ export const BarGraph = ({ points }) => (
 );
 ```
 
-Here, we are using `-point.y` for the height. This is for a couple of reasons, we'll go further into later; but is basically to do with `point.y` being a negative number, to get the `y` axis to move up, rather than down.
+Here, we are using `Math.abs(point.y)` for the height. This is for a couple of reasons, we'll go further into later; but is basically to do with `point.y` being a negative number, to get the `y` axis to move up, rather than down. And so, we add `+y` back to `-y` to get 0, and thus, we have a box that goes from `y` to the floor.
 
 We could instantiate that with some points.
 
@@ -82,7 +82,7 @@ export const BarGraph = ({ points }) => (
     <Plot>
       <PointSeries
         points={points}
-        renderPoint={({ point, input, rect, points }) => {
+        renderPoint={({ point, rect, points }) => {
           const bucketWidth = rect.width / points.length;
           const halfBucketWidth = bucketWidth / 2;
           return (
@@ -90,7 +90,7 @@ export const BarGraph = ({ points }) => (
               x={point.x + halfBucketWidth}
               y={point.y}
               width={30}
-              height={point.y * -1}
+              height={Math.abs(point.y)}
             />
           );
         }}
@@ -102,7 +102,7 @@ export const BarGraph = ({ points }) => (
 
 And what we get is
 
-<svg viewBox="0 0 300 150" style="height: auto; width: 100%;"><defs><clipPath id="0.755444228719063"><rect x="0" y="-150" width="300" height="150"></rect></clipPath></defs><rect x="0" y="0" width="300" height="150" fill="white" /><g transform="translate(0, 150)" clip-path="url(#0.755444228719063)"><g transform="translate(0, 0)"><rect x="30" y="-30" width="30" height="30"></rect><rect x="90" y="-60" width="30" height="60"></rect><rect x="150" y="-90" width="30" height="90"></rect><rect x="210" y="-60" width="30" height="60"></rect><rect x="270" y="-30" width="30" height="30"></rect></g></g></svg>
+![](./bar-graph-02.svg?sanitize=true)
 
 Oof! Everything has shifted over to the other side of the graph.  
 Well, it makes sense... Remember when I said that SVG will use the point you give it as the top left corner? So we have found the middle of the bucket. And that was an important first step. But now, we need to find the middle of the bar that we want centred, and we need to subtract the half-width of the bar from the half-width of the bucket, so that when the top left corner is provided, the middle of the bar lines up with the middle of the bucket.
@@ -120,7 +120,7 @@ export const BarGraph = ({ points }) => (
     <Plot>
       <PointSeries
         points={points}
-        renderPoint={({ point, input, rect, points }) => {
+        renderPoint={({ point, rect, points }) => {
           const bucketWidth = rect.width / points.length;
           const halfBucketWidth = bucketWidth / 2;
           const rectWidth = 30;
@@ -130,7 +130,7 @@ export const BarGraph = ({ points }) => (
               x={point.x + halfBucketWidth - halfRectWidth}
               y={point.y}
               width={rectWidth}
-              height={point.y * -1}
+              height={Math.abs(point.y)}
             />
           );
         }}
@@ -140,7 +140,7 @@ export const BarGraph = ({ points }) => (
 );
 ```
 
-<svg viewBox="0 0 300 150" style="height: auto; width: 100%;"><defs><clipPath id="0.878118134875828"><rect x="0" y="-150" width="300" height="150"></rect></clipPath></defs><rect x="0" y="0" width="300" height="150" fill="white" /><g transform="translate(0, 150)" clip-path="url(#0.878118134875828)"><g transform="translate(0, 0)"><rect x="15" y="-30" width="30" height="30"></rect><rect x="75" y="-60" width="30" height="60"></rect><rect x="135" y="-90" width="30" height="90"></rect><rect x="195" y="-60" width="30" height="60"></rect><rect x="255" y="-30" width="30" height="30"></rect></g></g></svg>
+![](./bar-graph-03.svg?sanitize=true)
 
 Tada!
 
@@ -150,4 +150,44 @@ You might be wondering why the left and right edges of the graph have smaller sp
 
 > If this work is so common, why not just make a graph that spits out these bars?
 
-Well, I&rsquo;m glad you asked, self.
+Well, I&rsquo;m glad you asked, self. The truth of the matter is that while this is a very common ask, when you want to show graphs to end-users or higher-ups, there are additional layers of design or polish that might want to be added; or additional layers of functionality. It becomes increasingly difficult to add those things, after the fact.
+
+Let&rsquo;s try something else, instead.
+In the spirit of React, why don't we make our own simple little components, that will give us centred bars?
+
+We were just assuming a width of 30. That won&rsquo;t work anymore. We will need to make it an argument.
+
+```jsx
+const CentredBar = ({ x, y, width, height }) => (
+  <rect x={x - width / 2} y={y} width={width} height={height} />
+);
+
+const CentredBars = ({ points, barWidth }) => (
+  <PointSeries points={points}>
+    {({ point, rect, points }) => {
+      const bucketWidth = rect.width / points.length;
+      const halfBucketWidth = bucketWidth / 2;
+      return (
+        <CentredBar
+          x={point.x + halfBucketWidth}
+          y={point.y}
+          width={barWidth}
+          height={Math.abs(point.y)}
+        />
+      );
+    }}
+  </PointSeries>
+);
+```
+
+Now we should be able to use that `<CentredBars>` component in all kinds of graphs, without any further effort.
+
+```jsx
+<Graph>
+  <Plot>
+    <CentredBars points={points} barWidth={15} />
+  </Plot>
+</Graph>
+```
+
+In fact, you could generalize that to a `<CentredSeries>` and pass in `<CentredBar>` as the function that would handle the rendering, instead of making `<CenredBars>` need to know about `barWidth`, but that sounds like a post for another day.
