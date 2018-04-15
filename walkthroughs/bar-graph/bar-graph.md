@@ -49,7 +49,7 @@ export default App;
 
 And if you were to view that, in browser, it might look something like:
 
-![](./bar-graph-01.svg?sanitize=true | width=300)
+![](./bar-graph-01.svg?sanitize=true)
 
 That's certainly a start, but it looks like there's still a little work to do. First, it appears that things are a little off-balance. I would expect the centre pillar to be centred, and I would expect an even amount of white-space on either side of the graph itself.
 
