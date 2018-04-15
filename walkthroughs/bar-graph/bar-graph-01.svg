@@ -1,0 +1,4 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" style="height: auto; width: 100%;"><defs><clipPath id="0.12572265989873088"><rect x="0" y="-150" width="300" height="150"></rect></clipPath></defs><rect x="0" y="0" width="300" height="150" fill="white" /><g transform="translate(0, 150)" clip-path="url(#0.12572265989873088)"><g transform="translate(0, 0)"><rect x="0" y="-30" width="30" height="30"></rect><rect x="60" y="-60" width="30" height="60"></rect><rect x="120" y="-90" width="30" height="90"></rect><rect x="180" y="-60" width="30" height="60"></rect><rect x="240" y="-30" width="30" height="30"></rect></g></g></svg>

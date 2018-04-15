@@ -49,7 +49,7 @@ export default App;
 
 And if you were to view that, in browser, it might look something like:
 
-<svg viewBox="0 0 300 150" style="height: auto; width: 100%;"><defs><clipPath id="0.12572265989873088"><rect x="0" y="-150" width="300" height="150"></rect></clipPath></defs><rect x="0" y="0" width="300" height="150" fill="white" /><g transform="translate(0, 150)" clip-path="url(#0.12572265989873088)"><g transform="translate(0, 0)"><rect x="0" y="-30" width="30" height="30"></rect><rect x="60" y="-60" width="30" height="60"></rect><rect x="120" y="-90" width="30" height="90"></rect><rect x="180" y="-60" width="30" height="60"></rect><rect x="240" y="-30" width="30" height="30"></rect></g></g></svg>
+![](./bar-graph-01.svg?sanitize=true | width=300)
 
 That's certainly a start, but it looks like there's still a little work to do. First, it appears that things are a little off-balance. I would expect the centre pillar to be centred, and I would expect an even amount of white-space on either side of the graph itself.
 
