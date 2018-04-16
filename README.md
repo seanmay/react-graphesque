@@ -17,6 +17,12 @@ then please do read on.
 
 [Lives here for now.](./API.md)
 
+## Walkthroughs
+
+- [Bar Graph basics](./walkthroughs/bar-graph/bar-graph.md)
+
+*more to come*
+
 ## Install
 
 ```bash
